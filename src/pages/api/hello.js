@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 const { createCanvas } = require('canvas');
-const fs = require('fs');
 
 export default function handler(req, res) {
 
@@ -59,19 +58,12 @@ export default function handler(req, res) {
     return canvas;
   };
 
-  // const makeImageBlob = (canvas) => {
-  //   const stream = canvas.createPNGStream();
-  //   const out = fs.createWriteStream('b.png');
-  //   stream.pipe(out);
-  // };
 
-  // makeImageBlob(drawCanvas('Orange Jam', 50, '$'));
 
 
 
   const ToBase64 = (canvas) => {
     const base64 = canvas.toDataURL();
-    // console.log(base64);
 
     const base64Data = base64.replace(/^data:image\/png;base64,/, "");
     console.log(base64Data);
@@ -80,9 +72,6 @@ export default function handler(req, res) {
   };
 
   const result = ToBase64(drawCanvas('Orange Jam', 50, '$'));
-
-
-
 
   res.status(200).json({
     "labelCode": "085C1B03E1DA",
